@@ -24,11 +24,16 @@ passport.use(
       proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
+      console.log("onGoogleCallback...");
+      console.log("Google User ID: ", profile.id);
       User.findOne({ googleId: profile.id }).then(existingUser => {
         if (existingUser) {
+          console.log("UserExist");
           done(null, existingUser);
         } else {
+          console.log("UserNotExist");
           new User({ googleId: profile.id }).save().then(user => {
+            console.log("User created, userId: ", user.id);
             done(null, user);
           });
         }
