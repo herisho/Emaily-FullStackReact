@@ -6,8 +6,8 @@ const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport");
 
-console.log("KEYS =>");
-console.log(keys);
+// console.log("KEYS =>");
+// console.log(keys);
 
 mongoose.connect(keys.mongoURI);
 
