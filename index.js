@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 // console.log("KEYS =>");
@@ -28,6 +29,7 @@ app.use(passport.session());
 
 require("./routes/auth_route")(app);
 require("./routes/billing_route")(app);
+require("./routes/survey_route")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
